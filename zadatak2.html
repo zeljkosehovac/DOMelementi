@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 - Website Building</title>
+    <link href=https://fonts.googleapis.com/icon?family=Material+Icons rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        #login-container {
+            width: 460px;
+            margin: 0 auto;
+        }
+
+        form label,
+        form input {
+            width: 100%;
+            box-sizing: border-box;
+
+        }
+
+        form input {
+            padding: 8px;
+
+        }
+
+        form label {
+            font-weight: bold;
+
+        }
+
+        form div {
+            margin: 16px 0px;
+        }
+
+        .red {
+            border: solid 1px red;
+
+        }
+
+
+
+        .green {
+            border: solid 1px green;
+
+        }
+
+
+
+        .shown {
+            display: inline-block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+      .done {
+          position: absolute;
+         right :430px;
+         top:40px;
+         
+      }
+      .negate {
+          position: absolute;
+          right :430px;
+         top:40px;
+
+      }
+      .done2 {
+          position: absolute;
+         right :430px;
+         top:107px;
+      }
+      .negate2 {
+          position: absolute;
+          right :430px;
+         top:107px;
+
+      }
+   
+
+     
+    </style>
+</head>
+
+<body>
+
+    <div id="login-container">
+
+        <form id="subscribe_form">
+            <div>
+
+                <label for="username">Username:</label>
+                <input id="username" type="text"><span id="done11" class="material-icons done hidden" style="color:green;">
+                    done
+                </span>
+                <span id="potvrda" class="material-icons done2 hidden" style="color:green;">
+                    done
+                </span>
+                    <span id="negate11" class="material-icons negate hidden" style="color:red;">
+                    highlight_off
+                </span>
+                <span id="negacija" class="material-icons negate2 hidden" style="color:red;">
+                    highlight_off
+                </span>
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input id="password" type="password">
+            </div>
+
+            <input type="submit" value="Login">
+            <p id="paragraf1"></p>
+            <p id="paragraf2"></p>
+
+        </form>
+
+    </div>
+
+    <script>
+
+
+
+
+
+        var subscribeForm = document.getElementById("subscribe_form");
+
+        subscribeForm.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            var inputIme = document.getElementById("username");
+            var inputSifra = document.getElementById("password");
+            // console.log(typeof (inputIme.value));
+
+            var paragraf1 = document.getElementById("paragraf1");
+            var paragraf2 = document.getElementById("paragraf2");
+           
+            var doneIcon2 = document.getElementById("potvrda");
+            var negateIcon2 = document.getElementById("negacija");
+            var doneIcon = document.getElementById("done11");
+            var negateIcon = document.getElementById("negate11")
+
+            var poruka1 = "please, enter username !";
+            var poruka2 = "please, enter valid username !";
+            var poruka3 = "please, enter password !";
+            var poruka4 = "please, enter valid password !";
+            var poruka5 = "Successful login !";
+
+            if (inputIme.value == "new_user" && inputSifra.value == "123456789") {
+                paragraf1.innerHTML = poruka5;
+                paragraf2.innerHTML = "";
+                inputIme.classList.add("green");
+                inputSifra.classList.add("green");
+                inputIme.classList.remove("red");
+                inputSifra.classList.remove("red");
+      
+                doneIcon.classList.remove("hidden");
+                doneIcon.classList.add ("shown");
+                negateIcon.classList.remove("shown");
+                negateIcon.classList.add("hidden");
+               
+
+                doneIcon2.classList.remove("hidden");
+                doneIcon2.classList.add ("shown");
+                negateIcon2.classList.remove("shown");
+                negateIcon2.classList.add("hidden");
+                
+
+
+            }
+            else if (inputIme.value == "new_user" && inputSifra.value == "") {
+                paragraf1.innerHTML = poruka3;
+                paragraf2.innerHTML = "";
+                inputIme.classList.add("green");
+                inputSifra.classList.add("red");
+                inputIme.classList.remove("red");
+                inputSifra.classList.remove("green");
+
+                doneIcon.classList.remove("hidden");
+                doneIcon.classList.add ("shown");
+                negateIcon.classList.remove("shown");
+                negateIcon.classList.add("hidden");
+               
+
+                doneIcon2.classList.remove("shown");
+                doneIcon2.classList.add ("hidden");
+                negateIcon2.classList.remove("hidden");
+                negateIcon2.classList.add("shown");
+
+            }
+            else if (inputIme.value == "new_user" && inputSifra.value != "123456789") {
+                paragraf1.innerHTML = poruka4;
+                paragraf2.innerHTML = "";
+                inputIme.classList.add("green");
+                inputSifra.classList.add("red");
+                inputIme.classList.remove("red");
+                inputSifra.classList.remove("green");
+                
+                doneIcon.classList.remove("hidden");
+                doneIcon.classList.add ("shown");
+                negateIcon.classList.remove("shown");
+                negateIcon.classList.add("hidden");
+               
+
+                doneIcon2.classList.remove("shown");
+                doneIcon2.classList.add ("hidden");
+                negateIcon2.classList.remove("hidden");
+                negateIcon2.classList.add("shown");
+
+            }
+            else if (inputIme.value == "" && inputSifra.value == "123456789") {
+                paragraf1.innerHTML = poruka1;
+                paragraf2.innerHTML = "";
+               
+                inputIme.classList.add("red");
+                inputSifra.classList.add("green");
+                inputIme.classList.remove("green");
+                inputSifra.classList.remove("red");
+
+                doneIcon.classList.remove("shown");
+                doneIcon.classList.add ("hidden");
+                negateIcon.classList.remove("hidden");
+                negateIcon.classList.add("shown");
+               
+
+                doneIcon2.classList.remove("hidden");
+                doneIcon2.classList.add ("shown");
+                negateIcon2.classList.remove("shown");
+                negateIcon2.classList.add("hidden");
+
+            }
+            else if (inputIme.value == "" && inputSifra.value == "") {
+                paragraf1.innerHTML = poruka1;
+                paragraf2.innerHTML = poruka3;
+                inputIme.classList.add("red");
+                inputSifra.classList.add("red");
+                inputIme.classList.remove("green");
+                inputSifra.classList.remove("green");
+
+                doneIcon.classList.remove("shown");
+                doneIcon.classList.add ("hidden");
+                negateIcon.classList.remove("hidden");
+                negateIcon.classList.add("shown");
+
+                doneIcon2.classList.remove("shown");
+                doneIcon2.classList.add ("hidden");
+                negateIcon2.classList.remove("hidden");
+                negateIcon2.classList.add("shown");
+            }
+            else if (inputIme.value == "" && inputSifra.value != "123456789") {
+                paragraf1.innerHTML = poruka1;
+                paragraf2.innerHTML = "";
+               
+                inputIme.classList.add("red");
+                inputSifra.classList.add("green");
+                inputIme.classList.remove("green");
+                inputSifra.classList.remove("red");
+
+                doneIcon.classList.remove("shown");
+                doneIcon.classList.add ("hidden");
+                negateIcon.classList.remove("hidden");
+                negateIcon.classList.add("shown");
+
+                doneIcon2.classList.remove("hidden");
+                doneIcon2.classList.add ("shown");
+                negateIcon2.classList.remove("shown");
+                negateIcon2.classList.add("hidden");
+
+
+            }
+            else if (inputIme.value != "new_user" && inputSifra.value == "123456789") {
+                paragraf1.innerHTML = poruka2;
+                paragraf2.innerHTML = "";
+               
+                inputIme.classList.add("red");
+                inputSifra.classList.add("green");
+                inputIme.classList.remove("green");
+                inputSifra.classList.remove("red");
+
+                doneIcon.classList.remove("shown");
+                doneIcon.classList.add ("hidden");
+                negateIcon.classList.remove("hidden");
+                negateIcon.classList.add("shown");
+
+                doneIcon2.classList.remove("hidden");
+                doneIcon2.classList.add ("shown");
+                negateIcon2.classList.remove("shown");
+                negateIcon2.classList.add("hidden");
+
+            } else if (inputIme.value != "new_user" && inputSifra.value == "") {
+                paragraf1.innerHTML = poruka2;
+                paragraf2.innerHTML = poruka3;
+                inputIme.classList.add("red");
+                inputSifra.classList.add("red");
+                inputIme.classList.remove("green");
+                inputSifra.classList.remove("green");
+
+                doneIcon.classList.remove("shown");
+                doneIcon.classList.add ("hidden");
+                negateIcon.classList.remove("hidden");
+                negateIcon.classList.add("shown");
+
+                doneIcon2.classList.remove("shown");
+                doneIcon2.classList.add ("hidden");
+                negateIcon2.classList.remove("hidden");
+                negateIcon2.classList.add("shown");
+
+
+
+
+            } else if (inputIme.value != "new_user" && inputSifra.value != "123456789") {
+                paragraf1.innerHTML = poruka2;
+                paragraf2.innerHTML = poruka4;
+                inputIme.classList.add("red");
+                inputSifra.classList.add("red");
+                inputIme.classList.remove("green");
+                inputSifra.classList.remove("green");
+
+                doneIcon.classList.remove("shown");
+                doneIcon.classList.add ("hidden");
+                negateIcon.classList.remove("hidden");
+                negateIcon.classList.add("shown");
+
+                doneIcon2.classList.remove("shown");
+                doneIcon2.classList.add ("hidden");
+                negateIcon2.classList.remove("hidden");
+                negateIcon2.classList.add("shown");
+
+
+            }
+            else {
+                alert("mora da sam nesto  zaboravio")
+            }
+        });
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
